@@ -1,6 +1,6 @@
 # playwright-e2e-tests
 
-# Why Playwright ?
+## Why Playwright ?
 
 - Auto-wait capability which makes test more stable and reliable
 - Works on all major browsers like Chrome, Firefox, Opera, Safari
@@ -12,12 +12,16 @@
 - Provides browser context to share data between tests
 - Provides codegen tool which generates test script by recording actions.
 
-# How to install
+## How to install
 
-## Run from your project's root directory
+### Run from your project's root directory
 
+```
 npm init playwright@latest
+```
 
-# How to run tests
+## How to run tests
 
+```
 npx playwright test
+```
