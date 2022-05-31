@@ -12,6 +12,7 @@ const config: PlaywrightTestConfig = {
     baseURL: "https://the-internet.herokuapp.com",
     browserName: "chromium",
     trace: "on-first-retry",
+    headless: true,
   },
 
   projects: [
