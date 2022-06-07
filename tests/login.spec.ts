@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test";
+import { App } from "../page-objects/App";
 
 test.beforeEach(async ({ page }) => {
   await page.goto("/login");
@@ -6,10 +7,8 @@ test.beforeEach(async ({ page }) => {
 
 test.describe("Login - e2e test", () => {
   test("Should be able to login", async ({ page }) => {
-    await page.locator("#username").fill("tomsmith");
-    await page.locator("#password").fill("SuperSecretPassword!");
-    await page.locator("button[type='submit']").click();
+    const app = new App(page);
+    await app.LoginPage.login("tomsmith", "SuperSecretPassword!");
     await expect(page).toHaveTitle("The Internet");
-    console.log(await page.title());
   });
 });
