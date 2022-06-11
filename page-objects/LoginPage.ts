@@ -1,4 +1,4 @@
-import { Page } from "@playwright/test";
+import { expect, Page } from "@playwright/test";
 export class LoginPage {
   readonly page: Page;
 
@@ -13,5 +13,11 @@ export class LoginPage {
     await this.page.type("#username", username);
     await this.page.type("#password", password);
     await this.page.click("button[type='submit']");
+  }
+
+  public async isUserlogged() {
+    await this.page.waitForSelector("#flash-messages");
+    const text = await this.page.locator("#flash-messages").innerText();
+    expect(text).toContain("You logged into a secure area!");
   }
 }

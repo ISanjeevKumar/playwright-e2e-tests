@@ -10,5 +10,6 @@ test.describe("Login - e2e test", () => {
     const app = new App(page);
     await app.LoginPage.login("tomsmith", "SuperSecretPassword!");
     await expect(page).toHaveTitle("The Internet");
+    await app.LoginPage.isUserlogged();
   });
 });
