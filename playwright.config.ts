@@ -11,7 +11,7 @@ const config: PlaywrightTestConfig = {
   use: {
     headless: false,
     viewport: { width: 1280, height: 720 },
-    baseURL: "https://juice-shop.herokuapp.com/",
+    baseURL: "https://the-internet.herokuapp.com",
   },
 };
 
