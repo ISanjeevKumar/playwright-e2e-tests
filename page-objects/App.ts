@@ -2,12 +2,13 @@ import { Page } from "@playwright/test";
 import { LoginPage } from "./LoginPage";
 export class App {
   readonly loginPage: LoginPage;
+  readonly page: Page;
 
   constructor(page: Page) {
-    this.loginPage = new LoginPage(page);
+    this.page = page;
   }
 
   public get LoginPage() {
-    return this.loginPage;
+    return this.loginPage ?? new LoginPage(this.page);
   }
 }
