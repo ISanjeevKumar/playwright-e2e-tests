@@ -1,6 +1,5 @@
-import { expect } from "@playwright/test";
 import { App } from "../page-objects/App";
-import test from "./fixtures/baseFixture";
+import { test, expect } from "./fixtures/baseFixture";
 
 test.beforeEach(async ({ page }) => {
   await page.goto("/login");
