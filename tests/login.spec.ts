@@ -1,5 +1,5 @@
 import { App } from "../page-objects/App";
-import { test, expect } from "./fixtures/baseFixture";
+import { test, expect } from "../custom-fixtures/baseFixture";
 
 test.beforeEach(async ({ page }) => {
   await page.goto("/login");
