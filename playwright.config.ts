@@ -7,12 +7,11 @@ const config: PlaywrightTestConfig = {
   expect: {
     timeout: 5000,
   },
-  reporter: "html",
+  reporter: [["html", { outputFolder: "test-report" }]],
   use: {
-    baseURL: "https://the-internet.herokuapp.com",
-    browserName: "chromium",
-    trace: "on-first-retry",
-    headless: true,
+    headless: false,
+    viewport: { width: 1280, height: 720 },
+    baseURL: "https://juice-shop.herokuapp.com/",
   },
 };
 
