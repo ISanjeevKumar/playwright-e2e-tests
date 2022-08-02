@@ -4,3 +4,4 @@ node_modules/
 /playwright/.cache/
 .DS_Store
 test-report/index.html
+test-report/data/14714fdb2364187b7a96560ff84c8bee4109ee73.png
