@@ -1,0 +1,16 @@
+[
+    {
+        "scenario": "User should be able to login",
+        "testGroup": "Smoke",
+        "testowner": "Team Sanjeev",
+        "username": "tomsmith",
+        "password": "SuperSecretPassword!"
+    },
+    {
+        "scenario": "User should not be able to login",
+        "testGroup": "Smoke",
+        "testowner": "Team Sanjeev",
+        "username": "juliet",
+        "password": "LovelyPassword!"
+    }
+]
