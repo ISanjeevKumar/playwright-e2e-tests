@@ -9,10 +9,6 @@ test.describe("Login - e2e test", () => {
     page,
     userCreds,
   }) => {
-    addInfo({
-      Owner: "Sanjeev Kumar",
-      UserStory: "US-1",
-    });
     const app = new App(page);
     await app.LoginPage.login(userCreds.username, userCreds.password);
     await expect(page).toHaveTitle("The Internet");
@@ -23,10 +19,6 @@ test.describe("Login - e2e test", () => {
     page,
     userCreds,
   }) => {
-    addInfo({
-      Owner: "Sanjeev Kumar",
-      UserStory: "US-2",
-    });
     const app = new App(page);
     await app.LoginPage.login(userCreds.username, userCreds.password);
     await expect(page).toHaveTitle("The Internet");
