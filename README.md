@@ -1,4 +1,4 @@
-# playwright-e2e-tests
+# playwright-e2e-tests [![Playwright Tests](https://github.com/ISanjeevKumar/playwright-e2e-tests/actions/workflows/playwright.yml/badge.svg)](https://github.com/ISanjeevKumar/playwright-e2e-tests/actions/workflows/playwright.yml)
 
 ## Why Playwright ?
 
