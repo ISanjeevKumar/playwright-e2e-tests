@@ -1,6 +1,7 @@
 import { Page } from "@playwright/test";
-import { LoginPage } from "./LoginPage";
-export class App {
+import { LoginPage } from "./juiceshop-app/LoginPage";
+
+export class JuiceshopApp {
   readonly loginPage: LoginPage;
   readonly page: Page;
 

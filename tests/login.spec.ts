@@ -1,4 +1,5 @@
-import { App } from "../page-objects/App";
+import { JuiceshopApp } from "../page-objects/JuiceshopApp";
+
 import { test, expect } from "../custom-fixtures/baseFixture";
 
 test.describe("Login - e2e test", () => {
@@ -9,7 +10,7 @@ test.describe("Login - e2e test", () => {
     page,
     userCreds,
   }) => {
-    const app = new App(page);
+    const app = new JuiceshopApp(page);
     await app.LoginPage.login(userCreds.username, userCreds.password);
     await expect(page).toHaveTitle("The Internet");
     await app.LoginPage.isUserlogged();

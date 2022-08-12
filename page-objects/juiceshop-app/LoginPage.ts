@@ -1,4 +1,8 @@
-import { BasePage } from "./BasePage";
+import { Locator } from "@playwright/test";
+import { ButtonType } from "../../data/enums/ButtonType";
+import { WebButtonHelper } from "../../libs/WebButtonHelper";
+import { BasePage } from "../BasePage";
+
 export class LoginPage extends BasePage {
   protected get usernameInpt(): string {
     return "#username";
@@ -6,8 +10,8 @@ export class LoginPage extends BasePage {
   protected get passwordInpt(): string {
     return "#password";
   }
-  protected get submitBtn(): string {
-    return "button[type='submit']";
+  protected get submitBtn(): Locator {
+    return this.page.locator("button[type='submit']");
   }
   protected get flashMessages(): string {
     return "#flash-messages";
@@ -20,7 +24,7 @@ export class LoginPage extends BasePage {
   public async login(username: string, password: string) {
     await this.page.type(this.usernameInpt, username);
     await this.page.type(this.passwordInpt, password);
-    await this.page.click(this.submitBtn);
+    await WebButtonHelper.click(this.submitBtn, ButtonType.LEFT);
   }
 
   public async isUserlogged() {
