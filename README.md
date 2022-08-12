@@ -25,3 +25,69 @@ npm init playwright@latest
 ```
 npx playwright test
 ```
+
+## Framework Capabilities
+
+- Parallel execution
+- Retry on failure
+- Cross browser testing
+- Enabled inbuilt report
+- Custom Wrapper methods
+
+# Design Pattern
+
+## Page object model for Internet-herokuapp
+
+### Page Layer
+
+```ts
+export class LoginPage extends BasePage {
+  protected get usernameInpt(): string {
+    return "#username";
+  }
+  protected get passwordInpt(): string {
+    return "#password";
+  }
+  protected get submitBtn(): Locator {
+    return this.page.locator("button[type='submit']");
+  }
+
+  public async login(username: string, password: string) {
+    await this.page.type(this.usernameInpt, username);
+    await this.page.type(this.passwordInpt, password);
+    await WebButtonHelper.click(this.submitBtn, ButtonType.LEFT);
+  }
+}
+```
+
+### App Class
+
+```ts
+export class InternetHerokuApp {
+  readonly loginPage: LoginPage;
+  readonly page: Page;
+
+  constructor(page: Page) {
+    this.page = page;
+  }
+
+  public get LoginPage() {
+    return this.loginPage ?? new LoginPage(this.page);
+  }
+}
+```
+
+### Test layer
+
+```ts
+test.describe("Login - e2e test", () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto("/login");
+  });
+  test("Should be able to login with valid user credentials", async ({  page,  userCreds, }) => {
+    const app = new InternetHerokuApp(page);
+    await app.LoginPage.login(userCreds.username, userCreds.password);
+    await expect(page).toHaveTitle("The Internet");
+    await app.LoginPage.isUserlogged();
+  });
+```
