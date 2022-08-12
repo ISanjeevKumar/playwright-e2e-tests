@@ -1,4 +1,4 @@
-import { Locator } from "@playwright/test";
+import { Locator, Page } from "@playwright/test";
 import { ButtonType } from "../../data/enums/ButtonType";
 import { WebButtonHelper } from "../../libs/WebButtonHelper";
 import { BasePage } from "../BasePage";
@@ -16,9 +16,12 @@ export class LoginPage extends BasePage {
   protected get flashMessages(): string {
     return "#flash-messages";
   }
+  constructor(page: Page) {
+    super(page);
+  }
 
   public async visit() {
-    this.page.goto("/login");
+    await this.page.goto("/login");
   }
 
   public async login(username: string, password: string) {

@@ -51,6 +51,9 @@ export class LoginPage extends BasePage {
   protected get submitBtn(): Locator {
     return this.page.locator("button[type='submit']");
   }
+  constructor(page: Page) {
+    super(page);
+  }
 
   public async login(username: string, password: string) {
     await this.page.type(this.usernameInpt, username);
