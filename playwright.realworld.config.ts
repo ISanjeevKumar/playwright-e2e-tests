@@ -7,7 +7,7 @@ const config: PlaywrightTestConfig = {
   use: {
     viewport: { width: 1280, height: 720 },
     baseURL: "https://demo.realworld.io/",
-    headless: true,
+    headless: false,
     screenshot: "only-on-failure",
   },
 };
