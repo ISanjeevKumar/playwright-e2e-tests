@@ -1,7 +1,7 @@
 import { Page } from "@playwright/test";
-import { LoginPage } from "./juiceshop-app/LoginPage";
+import { LoginPage } from "./internet-herokuapp/LoginPage";
 
-export class JuiceshopApp {
+export class InternetHerokuApp {
   readonly loginPage: LoginPage;
   readonly page: Page;
 

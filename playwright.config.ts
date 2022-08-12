@@ -7,7 +7,7 @@ const config: PlaywrightTestConfig = {
   use: {
     viewport: { width: 1280, height: 720 },
     baseURL: "https://the-internet.herokuapp.com",
-    headless: false,
+    headless: true,
     screenshot: "only-on-failure",
   },
 };

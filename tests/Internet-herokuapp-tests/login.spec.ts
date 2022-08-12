@@ -1,6 +1,6 @@
-import { JuiceshopApp } from "../page-objects/JuiceshopApp";
+import { InternetHerokuApp } from "../../page-objects/InternetHerokuApp";
 
-import { test, expect } from "../custom-fixtures/baseFixture";
+import { test, expect } from "../../custom-fixtures/baseFixture";
 
 test.describe("Login - e2e test", () => {
   test.beforeEach(async ({ page }) => {
@@ -10,7 +10,7 @@ test.describe("Login - e2e test", () => {
     page,
     userCreds,
   }) => {
-    const app = new JuiceshopApp(page);
+    const app = new InternetHerokuApp(page);
     await app.LoginPage.login(userCreds.username, userCreds.password);
     await expect(page).toHaveTitle("The Internet");
     await app.LoginPage.isUserlogged();
