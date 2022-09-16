@@ -1,11 +1,14 @@
 # playwright-e2e-tests [![Playwright Tests](https://github.com/ISanjeevKumar/playwright-e2e-tests/actions/workflows/playwright.yml/badge.svg)](https://github.com/ISanjeevKumar/playwright-e2e-tests/actions/workflows/playwright.yml)
 
-## Test framework has
+## Test framework Capabilities 
 
 - [x] Page Object Model - App Design Pattern
 - [x] Data Driven Test using data modal objects
-- [x] Inbuilt reporter
-- [x] Test Scripts - Various examples
+- [x] Parallel execution
+- [x] Retry on failure
+- [x] Cross browser testing
+- [x] Enabled inbuilt report
+- [x] Custom Wrapper methods
 
 ## Why Playwright ?
 
@@ -32,14 +35,6 @@ npm init playwright@latest
 ```
 npx playwright test
 ```
-
-## Framework Capabilities
-
-- Parallel execution
-- Retry on failure
-- Cross browser testing
-- Enabled inbuilt report
-- Custom Wrapper methods
 
 # Design Pattern
 
