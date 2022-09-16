@@ -1,5 +1,12 @@
 # playwright-e2e-tests [![Playwright Tests](https://github.com/ISanjeevKumar/playwright-e2e-tests/actions/workflows/playwright.yml/badge.svg)](https://github.com/ISanjeevKumar/playwright-e2e-tests/actions/workflows/playwright.yml)
 
+## Test framework has
+
+- [x] Page Object Model - App Design Pattern
+- [x] Data Driven Test using data modal objects
+- [x] Inbuilt reporter
+- [x] Test Scripts - Various examples
+
 ## Why Playwright ?
 
 - Auto-wait capability which makes test more stable and reliable
