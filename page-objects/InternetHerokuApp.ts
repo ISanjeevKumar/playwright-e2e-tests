@@ -1,8 +1,10 @@
 import { Page } from "@playwright/test";
+import { GeoLocationPage } from "./internet-herokuapp/GeoLocationPage";
 import { LoginPage } from "./internet-herokuapp/LoginPage";
 
 export class InternetHerokuApp {
-  readonly loginPage: LoginPage;
+  private loginPage: LoginPage;
+  private geoLocationPage: GeoLocationPage;
   readonly page: Page;
 
   constructor(page: Page) {
@@ -10,6 +12,12 @@ export class InternetHerokuApp {
   }
 
   public get LoginPage() {
-    return this.loginPage ?? new LoginPage(this.page);
+    return this.loginPage ?? (this.loginPage = new LoginPage(this.page));
+  }
+  public get GeoLocationPage() {
+    return (
+      this.geoLocationPage ??
+      (this.geoLocationPage = new GeoLocationPage(this.page))
+    );
   }
 }

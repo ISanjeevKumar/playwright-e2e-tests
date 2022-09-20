@@ -6,8 +6,9 @@ export class BasePage {
     this.page = page;
   }
 
-  public logAssert(expected: string, actual: string) {
+  protected logAssert(expected: string, actual: string, exactMatch = false) {
     console.log(`Expected: ${expected} and Actual: ${actual}`);
-    expect(actual).toContain(expected);
+    if (!exactMatch) expect(actual).toContain(expected);
+    else expect(actual).toBe(expected);
   }
 }

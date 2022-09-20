@@ -3,6 +3,9 @@ import type { PlaywrightTestConfig } from "@playwright/test";
 const config: PlaywrightTestConfig = {
   testDir: "./tests/Internet-herokuapp-tests",
   timeout: 60000,
+  expect: {
+    timeout: 5000,
+  },
   reporter: [["html", { outputFolder: "test-report" }]],
   use: {
     viewport: { width: 1280, height: 720 },
