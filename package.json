@@ -15,5 +15,8 @@
   "license": "ISC",
   "devDependencies": {
     "@playwright/test": "^1.22.2"
+  },
+  "dependencies": {
+    "@faker-js/faker": "^7.5.0"
   }
 }
