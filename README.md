@@ -1,6 +1,6 @@
 # playwright-e2e-tests [![Playwright Tests](https://github.com/ISanjeevKumar/playwright-e2e-tests/actions/workflows/playwright.yml/badge.svg)](https://github.com/ISanjeevKumar/playwright-e2e-tests/actions/workflows/playwright.yml)
 
-## Test framework Capabilities 
+## Test framework Capabilities
 
 - [x] Page Object Model - App Design Pattern
 - [x] Data Driven Test using data modal objects
@@ -9,6 +9,7 @@
 - [x] Cross browser testing
 - [x] Enabled inbuilt report
 - [x] Custom Wrapper methods
+- [x] Geolocation based tests
 
 ## Why Playwright ?
 
