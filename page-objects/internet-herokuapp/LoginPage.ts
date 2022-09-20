@@ -33,6 +33,6 @@ export class LoginPage extends BasePage {
   public async isUserlogged() {
     await this.page.waitForSelector(this.flashMessages);
     const text = await this.page.locator(this.flashMessages).innerText();
-    this.logAssert("You logged into a secure area!", text);
+    await this.logAssert("You logged into a secure area!", text);
   }
 }

@@ -24,7 +24,7 @@ export class GeoLocationPage extends BasePage {
   ) {
     let lat = await WebElementHelper.getText(this.Latitude);
     let longValue = await WebElementHelper.getText(this.Longitude);
-    this.logAssert(expecteLatValue, lat, true);
-    this.logAssert(expectedLongValue, longValue, true);
+    await this.logAssert(expecteLatValue, lat, true);
+    await this.logAssert(expectedLongValue, longValue, true);
   }
 }
