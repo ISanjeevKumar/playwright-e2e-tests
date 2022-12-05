@@ -4,18 +4,16 @@ This repository contains Playwright E2E Tests for testing web applications. It i
 
 Playwright is an open source Node.js library for automating the Chrome, Firefox, and WebKit browsers. It enables cross-platform end-to-end testing of web applications by providing APIs to control browsers and emulate user actions.
 
-The repository is continually updated with new features and examples. Contributions and feedback are welcome!
-
 ## Test framework Capabilities
 
 - [x] Page Object Model - App Design Pattern
+- [x] Page Object Model - Fixture based Design Pattern
 - [x] Data Driven Test using data modal objects
 - [x] Parallel execution
 - [x] Retry on failure
 - [x] Cross browser testing
 - [x] Enabled inbuilt report
 - [x] Custom Wrapper methods
-- [x] Geolocation based tests
 
 ## Why Playwright ?
 
@@ -43,31 +41,27 @@ npm init playwright@latest
 npx playwright test
 ```
 
-# Design Pattern
+# Page object model Design Pattern
 
-## Page object model for Internet-herokuapp
+## Approach 1 : App Design Pattern
 
 ### Page Layer
 
 ```ts
-export class LoginPage extends BasePage {
-  protected get usernameInpt(): string {
-    return "#username";
+export class RegisterPage extends BasePage {
+  protected get myAccountLnk() {
+    return this.page.locator('span:has-text("My Account")');
   }
-  protected get passwordInpt(): string {
-    return "#password";
-  }
-  protected get submitBtn(): Locator {
-    return this.page.locator("button[type='submit']");
+  protected get registerLnk() {
+    return this.page.locator("#top >> text=Register");
   }
   constructor(page: Page) {
     super(page);
   }
-
-  public async login(username: string, password: string) {
-    await this.page.type(this.usernameInpt, username);
-    await this.page.type(this.passwordInpt, password);
-    await WebButtonHelper.click(this.submitBtn, ButtonType.LEFT);
+  public async navigateToRegister() {
+    await this.page.goto("/");
+    await this.myAccountLnk.click();
+    await this.registerLnk.click();
   }
 }
 ```
@@ -75,16 +69,16 @@ export class LoginPage extends BasePage {
 ### App Class
 
 ```ts
-export class InternetHerokuApp {
-  readonly loginPage: LoginPage;
+export default class App {
   readonly page: Page;
+  readonly registerPage: RegisterPage;
 
   constructor(page: Page) {
     this.page = page;
   }
 
-  public get LoginPage() {
-    return this.loginPage ?? new LoginPage(this.page);
+  public get RegisterPage() {
+    return this.registerPage ?? new RegisterPage(this.page);
   }
 }
 ```
@@ -92,14 +86,38 @@ export class InternetHerokuApp {
 ### Test layer
 
 ```ts
-test.describe("Login - e2e test", () => {
-  test.beforeEach(async ({ page }) => {
-    await page.goto("/login");
-  });
-  test("Should be able to login with valid user credentials", async ({  page,  userCreds, }) => {
-    const app = new InternetHerokuApp(page);
-    await app.LoginPage.login(userCreds.username, userCreds.password);
-    await expect(page).toHaveTitle("The Internet");
-    await app.LoginPage.isUserlogged();
-  });
+test("Should be able to register new user", async ({ page }) => {
+  const app = new App(page);
+  await app.RegisterPage.navigateToRegister();
+  await expect(page).toHaveTitle("Register Account");
+  await app.RegisterPage.registerAccount();
+});
 ```
+
+## Approach 2 : Predefined Page Objects using Fixture
+
+### Custom fixture
+
+```ts
+type Pages = {
+  RegisterPage: RegisterPage;
+};
+
+export const test = base.extend<Pages>({
+  RegisterPage: async ({ page }, use) => {
+    await use(new RegisterPage(page));
+  },
+});
+```
+
+### Test layer
+
+```ts
+test("Should be able to register new user", async ({ page, RegisterPage }) => {
+  await RegisterPage.navigateToRegister();
+  await expect(page).toHaveTitle("Register Account");
+  await RegisterPage.registerAccount();
+});
+```
+
+The repository is continually updated with new features and examples. Contributions and feedback are welcome!
