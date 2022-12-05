@@ -1,9 +1,9 @@
 import { Page } from "@playwright/test";
-import { RegisterPage } from "./real-world-app/RegisterPage";
+import { RegisterPage } from "./RegisterPage";
 
-export class RealWorldApp {
-  readonly registerPage: RegisterPage;
+export default class App {
   readonly page: Page;
+  readonly registerPage: RegisterPage;
 
   constructor(page: Page) {
     this.page = page;

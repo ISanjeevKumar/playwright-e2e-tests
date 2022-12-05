@@ -4,9 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test:herokuapp": "npx playwright test --config=playwright.herokuapp.config.ts",
-    "test:realworld": "npx playwright test --config=playwright.realworld.config.ts",
-    "test:api": "npx playwright test --config=playwright.reqres.config.ts",
+    "test": "npx playwright test",
+    "test:headed": "npx playwright test --headed",
     "report": "npx playwright show-report",
     "debug": "npx playwright test --debug",
     "codegen": "npx playwright codegen"
