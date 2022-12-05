@@ -1,6 +1,6 @@
 # playwright-e2e-tests [![Playwright Tests](https://github.com/ISanjeevKumar/playwright-e2e-tests/actions/workflows/playwright.yml/badge.svg)](https://github.com/ISanjeevKumar/playwright-e2e-tests/actions/workflows/playwright.yml)
 
-This repository contains Playwright E2E Tests for testing web applications. It is intended to help developers quickly and easily set up automated end-to-end tests for their web applications.
+This repository contains Playwright E2E Tests for testing web applications. It is intended to help developers/QAs quickly and easily set up automated end-to-end tests for their web applications.
 
 Playwright is an open source Node.js library for automating the Chrome, Firefox, and WebKit browsers. It enables cross-platform end-to-end testing of web applications by providing APIs to control browsers and emulate user actions.
 
