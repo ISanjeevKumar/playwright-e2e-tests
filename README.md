@@ -27,13 +27,6 @@ Playwright is an open source Node.js library for automating the Chrome, Firefox,
 - Provides browser context to share data between tests
 - Provides codegen tool which generates test script by recording actions.
 
-## How to install
-
-### Run from your project's root directory
-
-```
-npm init playwright@latest
-```
 
 ## How to run tests
 
