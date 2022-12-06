@@ -41,6 +41,7 @@ export class RegisterPage extends BasePage {
   }
 
   public async fillRegisterDetails(register: RegisterModal) {
+    console.log("Register", JSON.stringify(register));
     await this.firstnameInpt.fill(register.firstname);
     await this.lastnameInpt.fill(register.lastname);
     await this.emailInpt.fill(register.email);
