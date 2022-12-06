@@ -112,4 +112,56 @@ test("Should be able to register new user", async ({ page, RegisterPage }) => {
 });
 ```
 
+## Why Data Modal for data driven tests ?
+
+Data modal classes are used to store and manage the data used in an application. They are used to structure the application’s data into objects that can be easily accessed and manipulated by the application.
+
+They also help ensure that the data is kept consistent and up-to-date, as any changes made to the data modal class will be reflected in the application. This helps ensure that the application behaves as expected and helps reduce development time.
+
+### Data modal class example
+
+```ts
+export class RegisterModal {
+  firstname: string;
+  lastname: string;
+  email: string;
+  password: string;
+  constructor(data: any) {
+    this.firstname = data.firstname ?? faker.name.firstName();
+    this.lastname = data.lastname ?? faker.name.lastName();
+    this.email = data.email ?? faker.internet.email();
+    this.password = data.password ?? faker.internet.password();
+  }
+}
+```
+
+### Use of data modal in test and Page Class
+
+```ts
+test.describe("Register new user", function () {
+  let registerdata: RegisterModal;
+
+  test.beforeEach(async () => {
+    registerdata = new RegisterModal(userdata);
+  });
+
+  test("Should be able to register new user", async ({ page }) => {
+    const app = new App(page);
+    await app.RegisterPage.navigateToRegister();
+    await app.RegisterPage.fillRegisterDetails(registerdata);
+    await app.RegisterPage.submitRegisterDetails();
+  });
+});
+```
+
+```ts
+  public async fillRegisterDetails(register: RegisterModal) {
+    console.log("Register", JSON.stringify(register));
+    await this.firstnameInpt.fill(register.firstname);
+    await this.lastnameInpt.fill(register.lastname);
+    await this.emailInpt.fill(register.email);
+    await this.passwordInpt.fill(register.password);
+  }
+```
+
 The repository is continually updated with new features and examples. Contributions and feedback are welcome!
