@@ -164,4 +164,30 @@ test.describe("Register new user", function () {
   }
 ```
 
+## How to run Playwright test in Docker Container
+
+1. Navigate to the project directory and create a Dockerfile with the below content.
+
+```dockerfile
+FROM mcr.microsoft.com/playwright:v1.28.0-focal
+
+RUN mkdir /workdir
+
+WORKDIR /workdir
+
+COPY . /workdir/
+
+RUN npx playwright install
+
+RUN npm install
+
+CMD ["npm", "run", "test"]
+```
+
+2. Add all the necessary dependencies for your project in package.json
+
+3. Run the command ‘docker build -f ./Dockerfile . -t playwright-image’ to build your docker image.
+
+4. Finally, run the command ‘docker run -it --name=playwright_container2 playwright-image’ to run your Playwright test automation.
+
 The repository is continually updated with new features and examples. Contributions and feedback are welcome!
