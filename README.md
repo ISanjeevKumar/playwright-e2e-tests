@@ -8,7 +8,7 @@ Playwright is an open source Node.js library for automating the Chrome, Firefox,
 
 - [x] Page Object Model - App Design Pattern
 - [x] Page Object Model - Fixture based Design Pattern
-- [x] Data Driven Test using data modal objects
+- [x] Data Driven Test using data modal objects and fixture
 - [x] Parallel execution
 - [x] Retry on failure
 - [x] Cross browser testing
@@ -26,7 +26,6 @@ Playwright is an open source Node.js library for automating the Chrome, Firefox,
 - Inbuilt API testing libraries to fire the network calls on fly within Web Application
 - Provides browser context to share data between tests
 - Provides codegen tool which generates test script by recording actions.
-
 
 ## How to run tests
 
