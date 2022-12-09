@@ -6,6 +6,7 @@ const config: PlaywrightTestConfig = {
   expect: {
     timeout: 5000,
   },
+  workers: 4,
   reporter: [["html", { outputFolder: "test-report" }]],
   use: {
     viewport: { width: 1280, height: 720 },
