@@ -8,7 +8,7 @@ const config: PlaywrightTestConfig = {
     timeout: 5000,
   },
   workers: 4,
-  reporter: [["html", { outputFolder: "test-report" }]],
+  reporter: [["html", { outputFolder: "test-results" }]],
   use: {
     viewport: { width: 1280, height: 720 },
     baseURL: "https://demo.opencart.com/",
