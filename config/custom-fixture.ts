@@ -1,4 +1,4 @@
-import { test as base } from "@playwright/test";
+import { test as testModule } from "@playwright/test";
 import { RegisterPage } from "../page-objects/RegisterPage";
 import * as userdata from "../data/user/register-data.json";
 import { RegisterModal } from "../modal-objects/RegisterModal";
@@ -10,7 +10,7 @@ type Pages = {
 type Testdata = {
   registerdata: RegisterModal;
 };
-export const test = base.extend<Pages & Testdata>({
+export const test = testModule.extend<Pages & Testdata>({
   registerdata: async ({}, use) => {
     await use(new RegisterModal(userdata));
   },

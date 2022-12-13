@@ -1,4 +1,4 @@
-import { expect, test } from "../../custom-fixtures/page-fixture";
+import { expect, test } from "../../config/custom-fixture";
 
 test.describe("Register new user", function () {
   test("Should be able to register new user", async ({
