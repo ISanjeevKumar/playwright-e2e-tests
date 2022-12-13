@@ -1,7 +1,7 @@
 import { Locator } from "@playwright/test";
 import { ButtonType } from "../data/enums/ButtonType";
 
-async function click(element: Locator, buttonType: ButtonType) {
+async function click(element: Locator, buttonType = ButtonType.LEFT) {
   try {
     switch (buttonType) {
       case ButtonType.LEFT:
@@ -45,6 +45,7 @@ async function doubleClick(element: Locator, buttonType = ButtonType.LEFT) {
     throw error;
   }
 }
+
 export const WebButtonHelper = {
   click,
   doubleClick,

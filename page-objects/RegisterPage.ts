@@ -2,7 +2,7 @@ import { Page } from "@playwright/test";
 import { RegisterModal } from "../modal-objects/RegisterModal";
 import { BasePage } from "./BasePage";
 import { WebButtonHelper } from "../libs/WebButtonHelper";
-import { ButtonType } from "../data/enums/ButtonType";
+
 export class RegisterPage extends BasePage {
   protected get myAccountLnk() {
     return this.page.locator('span:has-text("My Account")');
@@ -36,8 +36,8 @@ export class RegisterPage extends BasePage {
   }
   public async navigateToRegister() {
     await this.page.goto("/");
-    await WebButtonHelper.click(this.myAccountLnk, ButtonType.LEFT);
-    await WebButtonHelper.click(this.registerLnk, ButtonType.LEFT);
+    await WebButtonHelper.click(this.myAccountLnk);
+    await WebButtonHelper.click(this.registerLnk);
   }
 
   public async fillRegisterDetails(register: RegisterModal) {
@@ -49,6 +49,6 @@ export class RegisterPage extends BasePage {
   }
 
   public async submitRegisterDetails() {
-    await WebButtonHelper.click(this.continueBtn, ButtonType.LEFT);
+    await WebButtonHelper.click(this.continueBtn);
   }
 }
