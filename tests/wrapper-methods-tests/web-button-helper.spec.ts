@@ -1,5 +1,5 @@
 import { expect, test } from "@playwright/test";
-import { WebButtonHelper } from "../../libs/WebButtonHelper";
+import { WebButtonHelper } from "../../libs/web-button-helper";
 
 test("Should be able to perform left click", async ({ page }) => {
   await page.goto("/");

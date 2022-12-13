@@ -1,7 +1,7 @@
 import { Page } from "@playwright/test";
 import { RegisterModal } from "../modal-objects/RegisterModal";
 import { BasePage } from "./BasePage";
-import { WebButtonHelper } from "../libs/WebButtonHelper";
+import { WebButtonHelper } from "../libs/web-button-helper";
 
 export class RegisterPage extends BasePage {
   protected get myAccountLnk() {
