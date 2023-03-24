@@ -1,6 +1,7 @@
 export interface ApiConfig {
   apiBaseUrl: string;
   userEndpoint: string;
+  createUserEndpoint: string;
 }
 
 /**
@@ -10,6 +11,7 @@ export interface ApiConfig {
 const apiProductionConfig: ApiConfig = {
   apiBaseUrl: "https://reqres.in",
   userEndpoint: "/api/users?page=2",
+  createUserEndpoint: "/api/users"
 };
 
 /**
