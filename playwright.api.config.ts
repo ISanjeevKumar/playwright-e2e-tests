@@ -7,7 +7,11 @@ const config: PlaywrightTestConfig = {
     timeout: 45000,
   },
   workers: 3,
-  reporter: [["html", { open: "never" }], ["github"], ["list"]],
+  reporter: [
+    ["html", { open: "never", outputFolder: "test-report/api-report" }],
+    ["github"],
+    ["list", { printSteps: true }],
+  ],
   use: {
     headless: true,
     screenshot: "only-on-failure",
