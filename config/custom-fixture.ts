@@ -1,21 +1,37 @@
-import { test as testModule } from "@playwright/test";
-import { RegisterPage } from "../page-objects/RegisterPage";
-import * as userdata from "../data/user/register-data.json";
-import { RegisterModal } from "../modal-objects/RegisterModal";
+import { test as baseTest } from "@playwright/test";
+import * as userdata from "../data/login-data.json";
+import { User } from "../data/data-model/user-data";
+import App from "../page-objects/App";
 
 type Pages = {
-  RegisterPage: RegisterPage;
+  sauceDemoApp: App;
 };
 
-type Testdata = {
-  registerdata: RegisterModal;
+type Users = {
+  standardUser: User;
+  lockedOutUser: User;
+  problemUser: User;
+  performanceGlitchUser;
 };
-export const test = testModule.extend<Pages & Testdata>({
-  registerdata: async ({}, use) => {
-    await use(new RegisterModal(userdata));
+const users: User[] = Object.values(userdata).map(
+  (data: any) => new User(data.username, data.password)
+);
+
+export const test = baseTest.extend<Pages & Users>({
+  standardUser: async ({}, use) => {
+    const user = users.find((data) => data.username === "standard_user");
+    await use(new User(user?.username, user?.password));
   },
-  RegisterPage: async ({ page }, use) => {
-    await use(new RegisterPage(page));
+  lockedOutUser: async ({}, use) => {
+    const user = users.find((data) => data.username === "locked_out_user");
+    await use(new User(user?.username, user?.password));
+  },
+  problemUser: async ({}, use) => {
+    const user = users.find((data) => data.username === "problem_user");
+    await use(new User(user?.username, user?.password));
+  },
+  sauceDemoApp: async ({ page }, use) => {
+    await use(new App(page));
   },
 });
 

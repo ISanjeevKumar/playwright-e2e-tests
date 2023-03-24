@@ -1,23 +1,21 @@
-import { expect, Page } from "@playwright/test";
+import { expect, Locator, Page } from "@playwright/test";
+import { PageActions } from "../libs/page-actions";
 
 export class BasePage {
   protected readonly page: Page;
+  protected readonly pageActions: PageActions;
   constructor(page: Page) {
     this.page = page;
+    this.pageActions = new PageActions(page);
   }
 
-  protected async logAssert(
-    expected: string,
-    actual: string,
-    exactMatch = false
-  ) {
-    console.log(`Expected: ${expected} and Actual: ${actual}`);
-    if (!exactMatch) {
-      await expect(actual).toContain(expected);
-    } else {
-      await expect(actual).toBe(expected);
-    }
+  protected async assertText(element: Locator, expectedText: string) {
+    await expect(
+      element,
+      `Assert element must contain ${expectedText} text`
+    ).toHaveText(expectedText);
   }
+
   protected async assertPageURL(pageUrl) {
     console.log("Assertion for Page URL");
     await expect(this.page).toHaveURL(pageUrl);

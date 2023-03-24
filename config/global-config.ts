@@ -3,7 +3,7 @@ const fse = require("fs-extra");
 
 async function globalSetup(config: FullConfig) {
   await fse.remove("/test-results");
-  console.log("Playwright config:", config);
+  await fse.remove("/playwright-report");
 }
 
 export default globalSetup;

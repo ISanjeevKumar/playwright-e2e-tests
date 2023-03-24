@@ -1,15 +1,16 @@
 import { Page } from "@playwright/test";
-import { RegisterPage } from "./RegisterPage";
+import LoginPage from "./login-page";
 
 export default class App {
-  readonly page: Page;
-  readonly registerPage: RegisterPage;
+  private readonly page: Page;
+
+  private _loginPage: LoginPage;
 
   constructor(page: Page) {
     this.page = page;
   }
 
-  public get RegisterPage() {
-    return this.registerPage ?? new RegisterPage(this.page);
+  public get loginPage(): LoginPage {
+    return this._loginPage ?? (this._loginPage = new LoginPage(this.page));
   }
 }
