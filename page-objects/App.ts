@@ -1,5 +1,5 @@
 import { Page } from "@playwright/test";
-import { EnvConfig } from "../config/env-config";
+import { EnvConfig } from "../config/ui-env-config";
 import LoginPage from "./login-page";
 
 export default class App {

@@ -1,5 +1,5 @@
 import { expect, Locator, Page } from "@playwright/test";
-import { EnvConfig } from "../config/env-config";
+import { EnvConfig } from "../config/ui-env-config";
 import { PageActions } from "../libs/page-actions";
 
 export class BasePage {

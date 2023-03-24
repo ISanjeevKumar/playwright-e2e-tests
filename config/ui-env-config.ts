@@ -1,13 +1,12 @@
-export interface EnvConfig {
+export interface UiConfig {
   baseUrl: string;
-  // Add other properties as needed
 }
 
 /**
  * Configuration object for non-production environment.
  * @type {object}
  */
-const productionConfig: EnvConfig = {
+const productionConfig: UiConfig = {
   baseUrl: "https://www.saucedemo.com/",
 };
 
@@ -17,7 +16,7 @@ const productionConfig: EnvConfig = {
  * @returns {object} The configuration object for the specified environment.
  * @throws {Error} If the specified environment is invalid.
  */
-export function getConfig(environment: string): EnvConfig {
+export function getUiConfig(environment: string): UiConfig {
   switch (environment) {
     case "production":
       return productionConfig;

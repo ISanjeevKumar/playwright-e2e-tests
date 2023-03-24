@@ -1,7 +1,13 @@
-import { expect, test } from "../../config/custom-fixture";
+import { test, expect } from "../../config/api-base-test";
 
-test(`Should be get the list of users`, async ({ request, apiActions }) => {
-  const response = await request.get(`https://reqres.in/api/users?page=2`);
+test(`Should be get the list of users`, async ({
+  request,
+  apiActions,
+  apiConfig,
+}) => {
+  const response = await request.get(
+    `${apiConfig.apiBaseUrl}${apiConfig.userEndpoint}`
+  );
   const result = await apiActions.deserializeResponse<UserListResponse>(
     response
   );

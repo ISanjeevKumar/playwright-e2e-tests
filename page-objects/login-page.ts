@@ -1,5 +1,5 @@
 import { Page } from "playwright";
-import { EnvConfig } from "../config/env-config";
+import { EnvConfig } from "../config/ui-env-config";
 import { User } from "../data/data-model/user-data";
 import { BasePage } from "./base-page";
 

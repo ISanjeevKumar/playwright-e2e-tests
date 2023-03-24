@@ -1,4 +1,4 @@
-import { test } from "../../config/custom-fixture";
+import { test } from "../../config/ui-base-test.ts";
 import { LOCKED_OUT_ERROR_MESSAGE } from "../../libs/constants";
 
 test(`Should be able to login`, async ({ sauceDemoApp, standardUser }) => {
