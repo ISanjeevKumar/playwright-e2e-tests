@@ -149,20 +149,13 @@ export { expect } from "@playwright/test";
 ```ts
 import { test, expect } from "../../config/api-base-test";
 
-test(`Should be get the list of users`, async ({
-  request,
-  apiActions,
-  apiConfig,
-}) => {
-  const response = await request.get(
-    `${apiConfig.apiBaseUrl}${apiConfig.userEndpoint}`
-  );
+test(`Should be get the list of users`, async ({ request, apiActions, apiConfig, }) => {
 
-  const result = await apiActions.deserializeResponse<UserListResponse>(
-    response
-  );
+    const response = await request.get(`${apiConfig.apiBaseUrl}${apiConfig.userEndpoint}`);
 
-  expect(result.total).toBeGreaterThan(0);
+    const result = await apiActions.deserializeResponse<UserListResponse>(response);
+
+    expect(result.total).toBeGreaterThan(0);
 });
 ```
 
