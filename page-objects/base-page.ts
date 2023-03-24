@@ -1,11 +1,15 @@
 import { expect, Locator, Page } from "@playwright/test";
+import { EnvConfig } from "../config/env-config";
 import { PageActions } from "../libs/page-actions";
 
 export class BasePage {
   protected readonly page: Page;
+  protected readonly envConfig: EnvConfig;
   protected readonly pageActions: PageActions;
-  constructor(page: Page) {
+
+  constructor(page: Page, config: EnvConfig) {
     this.page = page;
+    this.envConfig = config;
     this.pageActions = new PageActions(page);
   }
 

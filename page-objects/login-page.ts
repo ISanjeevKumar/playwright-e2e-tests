@@ -1,4 +1,5 @@
 import { Page } from "playwright";
+import { EnvConfig } from "../config/env-config";
 import { User } from "../data/data-model/user-data";
 import { BasePage } from "./base-page";
 
@@ -18,12 +19,12 @@ export default class LoginPage extends BasePage {
   protected get errorLnk() {
     return this.page.locator('[data-test="error"]');
   }
-  constructor(page: Page) {
-    super(page);
+  constructor(page: Page, config: EnvConfig) {
+    super(page, config);
   }
 
   public async loadPage() {
-    await this.page.goto("https://www.saucedemo.com/");
+    await this.page.goto(this.envConfig.baseUrl);
     await this.page.waitForLoadState("domcontentloaded");
   }
 
@@ -36,7 +37,6 @@ export default class LoginPage extends BasePage {
   }
 
   private async login(username: string, password: string) {
-    console.log("login", username, password);
     await this.pageActions.enterText(this.usernameInput, username);
     await this.pageActions.enterText(this.passwordInput, password);
     await this.pageActions.clickOnElement(this.loginBtn);

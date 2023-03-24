@@ -1,6 +1,7 @@
 import { test as baseTest } from "@playwright/test";
 import * as userdata from "../data/login-data.json";
 import { User } from "../data/data-model/user-data";
+import { getConfig } from "./env-config";
 import App from "../page-objects/App";
 
 type Pages = {
@@ -17,6 +18,9 @@ const users: User[] = Object.values(userdata).map(
   (data: any) => new User(data.username, data.password)
 );
 
+const environment = process.env.ENVIRONMENT || "production";
+const envConfig = getConfig(environment);
+
 export const test = baseTest.extend<Pages & Users>({
   standardUser: async ({}, use) => {
     const user = users.find((data) => data.username === "standard_user");
@@ -31,7 +35,7 @@ export const test = baseTest.extend<Pages & Users>({
     await use(new User(user?.username, user?.password));
   },
   sauceDemoApp: async ({ page }, use) => {
-    await use(new App(page));
+    await use(new App(page, envConfig));
   },
 });
 
