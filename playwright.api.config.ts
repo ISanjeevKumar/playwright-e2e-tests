@@ -1,4 +1,8 @@
 import type { PlaywrightTestConfig } from "@playwright/test";
+import { getApiConfig } from "./config/api-env-config";
+
+const environment = process.env.ENVIRONMENT || "production";
+const apiConfig = getApiConfig(environment);
 
 const config: PlaywrightTestConfig = {
   testDir: "./tests/api-tests",
@@ -16,6 +20,7 @@ const config: PlaywrightTestConfig = {
     headless: true,
     screenshot: "only-on-failure",
     trace: "on",
+    baseURL: apiConfig.apiBaseUrl
   },
 };
 
