@@ -14,18 +14,6 @@ Playwright is an open source Node.js library for automating the Chrome, Firefox,
 - [x] Enabled inbuilt report
 - [x] Custom Wrapper methods
 
-## Why Playwright ?
-
-- Auto-wait capability which makes test more stable and reliable
-- Works on all major browsers like Chrome, Firefox, Opera, Safari
-- Works on any OS and supports native mobile emulation.
-- Works with any language - Javascript , TypeScript , Java , Python , C#
-- Inbuilt features called Traces which can take automatic screenshots , test video , flaky test retry and logging mechanism
-- Provides inspector tool which help us to monitor and debug every step of execution
-- Inbuilt API testing libraries to fire the network calls on fly within Web Application
-- Provides browser context to share data between tests
-- Provides codegen tool which generates test script by recording actions.
-
 ## How to run tests
 
 ```
@@ -129,12 +117,13 @@ type Users = {
   standardUser: User;
   lockedOutUser: User;
 };
+
 const users: User[] = Object.values(userdata).map(
   (data: any) => new User(data.username, data.password)
 );
 
 const environment = process.env.ENVIRONMENT || "production";
-const envConfig = getConfig(environment);
+const uiConfig = getUiConfig(environment);
 
 export const test = baseTest.extend<Pages & Users>({
   standardUser: async ({}, use) => {
@@ -146,7 +135,57 @@ export const test = baseTest.extend<Pages & Users>({
     await use(new User(user?.username, user?.password));
   },
   sauceDemoApp: async ({ page }, use) => {
-    await use(new App(page, envConfig));
+    await use(new App(page, uiConfig));
+  },
+});
+
+export { expect } from "@playwright/test";
+```
+
+## API test Example
+
+### Test
+
+```ts
+import { test, expect } from "../../config/api-base-test";
+
+test(`Should be get the list of users`, async ({
+  request,
+  apiActions,
+  apiConfig,
+}) => {
+  const response = await request.get(
+    `${apiConfig.apiBaseUrl}${apiConfig.userEndpoint}`
+  );
+
+  const result = await apiActions.deserializeResponse<UserListResponse>(
+    response
+  );
+
+  expect(result.total).toBeGreaterThan(0);
+});
+```
+
+### API base test
+
+```ts
+import { test as baseTest } from "@playwright/test";
+import { ApiAction } from "../libs/api-actions";
+import { ApiConfig, getApiConfig } from "./api-env-config";
+
+type ApiTestObjects = {
+  apiActions: ApiAction;
+  apiConfig: ApiConfig;
+};
+const environment = process.env.ENVIRONMENT || "production";
+const apiConfig = getApiConfig(environment);
+
+export const test = baseTest.extend<ApiTestObjects>({
+  apiActions: async ({}, use) => {
+    await use(new ApiAction());
+  },
+  apiConfig: async ({}, use) => {
+    await use(apiConfig);
   },
 });
 
