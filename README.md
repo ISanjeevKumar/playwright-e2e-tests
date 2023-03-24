@@ -35,7 +35,7 @@ npx playwright test --config=playwright.ui.config.ts
 or
 
 ```
-npm run test:ui
+npm run test:e2e
 ```
 
 ## Page object model Design Pattern
