@@ -1,7 +1,7 @@
 import type { PlaywrightTestConfig } from "@playwright/test";
 
 const config: PlaywrightTestConfig = {
-  testDir: "./tests/",
+  testDir: "./tests/ui-tests",
   globalSetup: "./config/global-config.ts",
   timeout: 60000,
   expect: {

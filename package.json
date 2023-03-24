@@ -4,10 +4,11 @@
   "description": "This repository contains Playwright E2E Tests for testing web applications. It is intended to help developers/QAs quickly and easily set up automated end-to-end tests for their web applications.",
   "main": "index.js",
   "scripts": {
-    "test:e2e": "npx playwright test",
-    "test:headed": "npx playwright test --headed",
+    "test:e2e": "npx playwright test --config=playwright.ui.config.ts",
+    "test:api": "npx playwright test --config=playwright.api.config.ts",
+    "test:ui:headed": "npx playwright test --headed --config=playwright.ui.config.ts",
     "report": "npx playwright show-report",
-    "debug": "npx playwright test --debug",
+    "debug:ui": "npx playwright test --debug --config=playwright.ui.config.ts",
     "codegen": "npx playwright codegen"
   },
   "keywords": [

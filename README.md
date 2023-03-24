@@ -7,7 +7,7 @@ Playwright is an open source Node.js library for automating the Chrome, Firefox,
 ## Test framework Capabilities
 
 - [x] Page Object Model Design Pattern
-- [x] Data Driven Test using data modal objects 
+- [x] Data Driven Test using data modal objects
 - [x] Parallel execution
 - [x] Retry on failure
 - [x] Cross browser testing
@@ -29,17 +29,19 @@ Playwright is an open source Node.js library for automating the Chrome, Firefox,
 ## How to run tests
 
 ```
-npx playwright test
+npx playwright test --config=playwright.ui.config.ts
 ```
 
-or 
+or
+
 ```
-npm run test
+npm run test:ui
 ```
 
 ## Page object model Design Pattern
 
-### Test 
+### Test
+
 ```ts
 import { test } from "../../config/custom-fixture";
 
@@ -50,6 +52,7 @@ test(`Should be able to login`, async ({ sauceDemoApp, standardUser }) => {
 ```
 
 ### SauceDemoApp Class - Manages all page objects
+
 ```ts
 export default class App {
   private readonly page: Page;
@@ -72,6 +75,7 @@ export default class App {
 ```
 
 ### Page Class Example
+
 ```ts
 export default class LoginPage extends BasePage {
   protected get usernameInput() {
@@ -98,23 +102,24 @@ export default class LoginPage extends BasePage {
   public async loginAsUser(userType: User) {
     await this.login(userType.username, userType.password);
   }
-  
+
   private async login(username: string, password: string) {
     await this.pageActions.enterText(this.usernameInput, username);
     await this.pageActions.enterText(this.passwordInput, password);
     await this.pageActions.clickOnElement(this.loginBtn);
   }
 }
-
-
 ```
+
 ### Extending Playwright Test Library with Additional Functionality
-* The test function is imported from the Playwright Test Library.
-* The Pages type is defined to represent the pages of the application.
-* The Users type is defined to represent the users of the application.
-* The environment variable is created to store the current environment or the default environment ("production").
-* The envConfig variable is created to store the configuration object for the current environment.
-* The test function is extended to add additional Fixture for the pages and users of the application.
+
+- The test function is imported from the Playwright Test Library.
+- The Pages type is defined to represent the pages of the application.
+- The Users type is defined to represent the users of the application.
+- The environment variable is created to store the current environment or the default environment ("production").
+- The envConfig variable is created to store the configuration object for the current environment.
+- The test function is extended to add additional Fixture for the pages and users of the application.
+
 ```ts
 type Pages = {
   sauceDemoApp: App;
@@ -146,8 +151,8 @@ export const test = baseTest.extend<Pages & Users>({
 });
 
 export { expect } from "@playwright/test";
-
 ```
+
 ## How to run Playwright test in Docker Container
 
 1. Navigate to the project directory and create a Dockerfile with the below content.
