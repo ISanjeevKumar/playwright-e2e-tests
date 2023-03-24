@@ -8,7 +8,7 @@ const config: PlaywrightTestConfig = {
     timeout: 45000,
   },
   workers: 3,
-  reporter: [["html", { open: "never" }], ["list"]],
+  reporter: [["html", { open: "never" }], ["github"], ["list"]],
   use: {
     headless: true,
     screenshot: "only-on-failure",
